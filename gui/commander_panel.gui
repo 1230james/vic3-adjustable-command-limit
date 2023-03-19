@@ -446,8 +446,9 @@ types commander_panel_types
                             ACL_command_limit_selection = {
                                 
                                 blockoverride "button_1_click" {
-                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelVeryLow)]"
-                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                                    onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                                    enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
                                 }
                                 
                                 blockoverride "button_2_click" {
@@ -471,26 +472,28 @@ types commander_panel_types
                                 }
 
                                 blockoverride "tooltip_1" {
-                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescVeryLow]"
+                                    tooltip = "Reduce command limit by 75%." # TODO
                                 }
                                 blockoverride "tooltip_2" {
-                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescLow]"
+                                    tooltip = "Reduce command limit by 50%." # TODO
                                 }
                                 blockoverride "tooltip_3" {
-                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescMedium]"
+                                    tooltip = "Reduce command limit by 25%." # TODO
                                 }
                                 blockoverride "tooltip_4" {
-                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescHigh]"
+                                    tooltip = "Set command limit to normal." # TODO
                                 }
                                 blockoverride "tooltip_5" {
-                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescVeryHigh]"
+                                    tooltip = "Increase command limit by 25%." # TODO
                                 }									
 
                                 blockoverride "setvisible_very_low" {
-                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelVeryLow))]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                                    visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
                                 }
                                 blockoverride "setvisible_very_low_2" {
-                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelVeryLow)]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                                    visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
                                 }
 
                                 blockoverride "setvisible_low" {

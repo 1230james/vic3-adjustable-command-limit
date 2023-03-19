@@ -1,0 +1,22 @@
+﻿ACL_sgui_cut_75 = {
+    scope = character
+    type  = scripted_gui
+    saved_scopes = {}
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        NOT = {
+            has_trait = ACL_lim_cut_75_trait
+        }
+    }
+    
+    effect = {
+        add_trait    = ACL_lim_cut_75_trait
+        remove_trait = ACL_lim_cut_50_trait
+        remove_trait = ACL_lim_cut_25_trait
+        remove_trait = ACL_lim_over_25_trait
+    }
+}
