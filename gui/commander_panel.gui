@@ -378,11 +378,11 @@ types commander_panel_types
 					}
 
 					widget = {
-						minimumsize = { @panel_width 520 }
+						minimumsize = { @panel_width 550 }
 
 						flowcontainer = {
 							parentanchor = right|vcenter
-							position = { 0 -15 }
+							position = { 0 -10 }
 							margin_left = 5
 							margin_bottom = 7
 							margin_top = 7
@@ -441,6 +441,86 @@ types commander_panel_types
 							}
 
 							divider_clean = {}
+                            
+                            ### Command Limit Adjustment
+                            ACL_command_limit_selection = {
+                                
+                                blockoverride "button_1_click" {
+                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelVeryLow)]"
+                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                }
+                                
+                                blockoverride "button_2_click" {
+                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelLow)]"
+                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                }									
+
+                                blockoverride "button_3_click" {
+                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelMedium)]"
+                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                }
+
+                                blockoverride "button_4_click" {
+                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelHigh)]"
+                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                }
+                                
+                                blockoverride "button_5_click" {
+                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelVeryHigh)]"
+                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                }
+
+                                blockoverride "tooltip_1" {
+                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescVeryLow]"
+                                }
+                                blockoverride "tooltip_2" {
+                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescLow]"
+                                }
+                                blockoverride "tooltip_3" {
+                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescMedium]"
+                                }
+                                blockoverride "tooltip_4" {
+                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescHigh]"
+                                }
+                                blockoverride "tooltip_5" {
+                                    tooltip = "[GetPlayer.GetGovernmentWageLevelDescVeryHigh]"
+                                }									
+
+                                blockoverride "setvisible_very_low" {
+                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelVeryLow))]"
+                                }
+                                blockoverride "setvisible_very_low_2" {
+                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelVeryLow)]"
+                                }
+
+                                blockoverride "setvisible_low" {
+                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelLow))]"
+                                }
+                                blockoverride "setvisible_low_2" {
+                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelLow)]"
+                                }
+
+                                blockoverride "setvisible_medium" {
+                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelMedium))]"
+                                }
+                                blockoverride "setvisible_medium_2" {
+                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelMedium)]"
+                                }
+
+                                blockoverride "setvisible_high" {
+                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelHigh))]"
+                                }
+                                blockoverride "setvisible_high_2" {
+                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelHigh)]"
+                                }
+
+                                blockoverride "setvisible_very_high" {
+                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelVeryHigh))]"
+                                }
+                                blockoverride "setvisible_very_high_2" {
+                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelVeryHigh)]"
+                                }
+                            }
 
 							### BATTALIONS, ATTRITION, MORALE
 							character_stats_entry = {
@@ -1418,6 +1498,131 @@ types commander_panel_types
 					using = fontsize_small
 				}
 			}	
+		}
+	}
+    
+    type ACL_set_level_bar_cmd_lim = flowcontainer {
+		### VERY LOW
+		set_level_bar_item = {
+			block "tooltip_1" {
+				tooltip = "[GetPlayer.GetTaxLevelDescVeryLow]"
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_low.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_1_button_sound
+				block "button_1_click" {
+					onclick = "[Execute(GetPlayer.SetTaxLevelVeryLow)]"
+					enabled = "[GetPlayer.HasAnyTaxes]"
+				}
+			}
+			blockoverride "setvisible" {
+				block "setvisible_very_low" {}
+			}
+			blockoverride "setvisible_2" {
+				block "setvisible_very_low_2" {}
+			}
+		}
+		### LOW
+		set_level_bar_item = {
+			block "tooltip_2" {
+				tooltip = "[GetPlayer.GetTaxLevelDescLow]"
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_low.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_2_button_sound
+				block "button_2_click" {
+					onclick = "[Execute(GetPlayer.SetTaxLevelLow)]"
+					enabled = "[GetPlayer.HasAnyTaxes]"
+				}
+			}
+			blockoverride "setvisible" {
+				block "setvisible_low" {}
+			}
+			blockoverride "setvisible_2" {
+				block "setvisible_low_2" {}
+			}
+		}
+		### MEDIUM
+		set_level_bar_item = {
+			block "tooltip_3" {
+				tooltip = "[GetPlayer.GetTaxLevelDescMedium]"
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_medium.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_3_button_sound
+				block "button_3_click" {
+					onclick = "[Execute(GetPlayer.SetTaxLevelMedium)]"
+					enabled = "[GetPlayer.HasAnyTaxes]"
+				}
+			}
+			blockoverride "setvisible" {
+				block "setvisible_medium" {}
+			}
+			blockoverride "setvisible_2" {
+				block "setvisible_medium_2" {}
+			}
+		}
+		### HIGH
+		set_level_bar_item = {
+			block "tooltip_4" {
+				tooltip = "[GetPlayer.GetTaxLevelDescHigh]"
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_high.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_4_button_sound
+				block "button_4_click" {
+					onclick = "[Execute(GetPlayer.SetTaxLevelHigh)]"
+					enabled = "[GetPlayer.HasAnyTaxes]"
+				}
+			}
+			blockoverride "setvisible" {
+				block "setvisible_high" {}
+			}
+			blockoverride "setvisible_2" {
+				block "setvisible_high_2" {}
+			}
+		}
+		### VERY HIGH
+		set_level_bar_item = {
+			block "tooltip_5" {
+				tooltip = "[GetPlayer.GetTaxLevelDescVeryHigh]"
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_high.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_5_button_sound
+				block "button_5_click" {
+					onclick = "[Execute(GetPlayer.SetTaxLevelVeryHigh)]"
+					enabled = "[GetPlayer.HasAnyTaxes]"
+				}
+			}
+			blockoverride "setvisible" {
+				block "setvisible_very_high" {}
+			}
+			blockoverride "setvisible_2" {
+				block "setvisible_very_high_2" {}
+			}
+		}
+	}
+    
+    type ACL_command_limit_selection = container {
+		minimumsize = { 220 50 }
+
+		block "command_limit_controls" {
+			ACL_set_level_bar_cmd_lim = {
+				position = { 0 0 }
+				parentanchor = left|vcenter
+                margin_left = 9
+			}
 		}
 	}
 }
