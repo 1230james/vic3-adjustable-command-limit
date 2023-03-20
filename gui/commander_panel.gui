@@ -467,8 +467,9 @@ types commander_panel_types
                                 }
                                 
                                 blockoverride "button_5_click" {
-                                    onclick = "[Execute(GetPlayer.SetGovernmentWageLevelVeryHigh)]"
-                                    enabled = "[GetPlayer.HasGovernmentWages]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                                    onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                                    enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
                                 }
 
                                 blockoverride "tooltip_1" {
@@ -518,10 +519,12 @@ types commander_panel_types
                                 }
 
                                 blockoverride "setvisible_very_high" {
-                                    visible = "[Not(IsValid(GetPlayer.SetGovernmentWageLevelVeryHigh))]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                                    visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
                                 }
                                 blockoverride "setvisible_very_high_2" {
-                                    visible = "[IsValid(GetPlayer.SetGovernmentWageLevelVeryHigh)]"
+                                    datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                                    visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
                                 }
                             }
 
