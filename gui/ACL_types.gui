@@ -1,0 +1,131 @@
+types ACL_gui_types {
+    type ACL_set_level_bar_cmd_lim = flowcontainer {
+		### VERY LOW
+		set_level_bar_item = {
+			block "tooltip_1" {
+				tooltip = "Reduce command limit by 75%." # TODO
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_low.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_1_button_sound
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			blockoverride "setvisible" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			}
+			blockoverride "setvisible_2" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
+                visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+		### LOW
+		set_level_bar_item = {
+			block "tooltip_2" {
+				tooltip = "Reduce command limit by 50%." # TODO
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_low.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_2_button_sound
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_50')]"
+                onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			blockoverride "setvisible" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_50')]"
+                visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			}
+			blockoverride "setvisible_2" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_50')]"
+                visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+		### MEDIUM
+		set_level_bar_item = {
+			block "tooltip_3" {
+				tooltip = "Reduce command limit by 25%." # TODO
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_medium.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_3_button_sound
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_25')]"
+                onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			blockoverride "setvisible" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_25')]"
+                visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			}
+			blockoverride "setvisible_2" {
+				datacontext = "[GetScriptedGui('ACL_sgui_cut_25')]"
+                visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+		### HIGH
+		set_level_bar_item = {
+			block "tooltip_4" {
+				tooltip = "Set command limit to normal." # TODO
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_high.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_4_button_sound
+				datacontext = "[GetScriptedGui('ACL_sgui_normal')]"
+                onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			blockoverride "setvisible" {
+				datacontext = "[GetScriptedGui('ACL_sgui_normal')]"
+                visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			}
+			blockoverride "setvisible_2" {
+				datacontext = "[GetScriptedGui('ACL_sgui_normal')]"
+                visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+		### VERY HIGH
+		set_level_bar_item = {
+			block "tooltip_5" {
+				tooltip = "Increase command limit by 25%." # TODO
+			}
+			blockoverride "button_texture" {
+				texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_high.dds"
+			}
+			blockoverride "click" {
+				using = budget_coins_lvl_5_button_sound
+				datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
+                enabled     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+			blockoverride "setvisible" {
+				datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                visible     = "[Not( ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ) )]"
+			}
+			blockoverride "setvisible_2" {
+				datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
+                visible     = "[ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End )]"
+			}
+		}
+	}
+    
+    type ACL_command_limit_selection = container {
+		minimumsize = { 220 50 }
+
+		block "command_limit_controls" {
+			ACL_set_level_bar_cmd_lim = {
+				position = { 0 0 }
+				parentanchor = left|vcenter
+                margin_left = 9
+			}
+		}
+	}
+}
