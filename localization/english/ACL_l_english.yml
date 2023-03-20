@@ -1,10 +1,12 @@
 ﻿l_english:
- ACL_lim_cut_75_trait:0 "Limited Forces"
- ACL_lim_cut_50_trait:0 "Dimished Forces"
- ACL_lim_cut_25_trait:0 "Reduced Forces"
- ACL_lim_over_25_trait:0 "Expanded Forces"
- 
- ACL_lim_cut_75_trait_desc:0  "This commander has been ordered to greatly limit the size of their forces to a quarter of their normal capacity."
- ACL_lim_cut_50_trait_desc:0  "This commander has been ordered dimish the size of their forces to half their normal capacity."
- ACL_lim_cut_25_trait_desc:0  "This commander has been ordered to reduce the size of the forces to three-quarters of their normal capacity."
- ACL_lim_over_25_trait_desc:0 "This commander has been ordered to take on extra forces beyond their normal capacity."
+    # Traits
+    ACL_lim_cut_75_trait:0 "Limited Forces"
+    ACL_lim_cut_50_trait:0 "Dimished Forces"
+    ACL_lim_cut_25_trait:0 "Reduced Forces"
+    ACL_lim_over_25_trait:0 "Expanded Forces"
+
+    ACL_lim_cut_75_trait_desc:0  "This commander has been ordered to greatly limit the size of their forces to a quarter of their normal capacity."
+    ACL_lim_cut_50_trait_desc:0  "This commander has been ordered dimish the size of their forces to half their normal capacity."
+    ACL_lim_cut_25_trait_desc:0  "This commander has been ordered to reduce the size of the forces to three-quarters of their normal capacity."
+    ACL_lim_over_25_trait_desc:0 "This commander has been ordered to take on extra forces beyond their normal capacity."
+    
