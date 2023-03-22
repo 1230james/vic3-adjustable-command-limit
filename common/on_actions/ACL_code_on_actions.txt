@@ -1,0 +1,59 @@
+﻿### Calculate & apply overstacking debuffs
+#   Root = attacker or defender country
+#   scope:battle = battle
+#   scope:attacker = attacking commander
+#   scope:defender = defending commander
+#   scope:state = location state
+on_battle_started = {
+    effect = {
+        scope:attacker = {
+            if = { # If attacking commander has the +25% trait...
+                limit  = {
+                    has_trait = ACL_lim_over_25_trait
+                }
+                add_modifier = {
+                    name       = ACL_overstacking_penalty_modifier
+                    multiplier = ACL_commander_unit_cap
+                    months     = -1
+                }
+            }
+        }
+        scope:defender = {
+            if = { # If attacking commander has the +25% trait...
+                limit  = {
+                    has_trait = ACL_lim_over_25_trait
+                }
+                add_modifier = {
+                    name       = ACL_overstacking_penalty_modifier
+                    multiplier = ACL_commander_unit_cap
+                    months     = -1
+                }
+            }
+        }
+    }
+}
+
+### Remove overstacking debuffs on battle end
+#   Root = attacker or defender country
+#   scope:battle = battle
+#   scope:attacker = attacking commander
+#   scope:defender = defending commander
+#   scope:state = location state
+on_battle_ended = {
+    scope:attacker = {
+        if = {
+            limit = {
+                has_modifier = ACL_overstacking_penalty_modifier
+            }
+            remove_modifier = ACL_overstacking_penalty_modifier
+        }
+    }
+    scope:defender = {
+        if = {
+            limit = {
+                has_modifier = ACL_overstacking_penalty_modifier
+            }
+            remove_modifier = ACL_overstacking_penalty_modifier
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿# Calculates the normal unit cap of the general/admiral this is called from
+ACL_commander_unit_cap = {
+    value = 0
+    
+    # Calculate multipliers
+    # Modifiers in Clausewitz are additive, btw
+    
+    # Condition: Senile
+    if = {
+        limit = {
+            this = {
+                has_trait = senile
+            }
+        }
+        subtract = 0.25
+    }
+    
+    # Personality: Arrogant
+    if = {
+        limit = {
+            this = {
+                has_trait = arrogant
+            }
+        }
+        add = 0.25
+    }
+    
+    # Personality: Cautious
+    if = {
+        limit = {
+            this = {
+                has_trait = cautious
+            }
+        }
+        subtract = 0.2
+    }
+}

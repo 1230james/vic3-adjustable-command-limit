@@ -10,3 +10,5 @@
     ACL_lim_cut_25_trait_desc:0  "This commander has been ordered to reduce the size of the forces to three-quarters of their normal capacity."
     ACL_lim_over_25_trait_desc:0 "This commander has been ordered to take on extra forces beyond their normal capacity."
     
+    # Modifiers
+    ACL_overstacking_penalty_modifier:0 "Overburdened Commander"
