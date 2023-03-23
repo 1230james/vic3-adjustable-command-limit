@@ -1,6 +1,21 @@
 ﻿# Calculates the normal unit cap of the general/admiral this is called from
+ACL_commander_base_unit_cap = { # Helper value
+    value    = 20 # 20 * commander's rank
+    multiply = commander_rank
+    
+    if = { # multiply by 3 to factor in conscripts for generals + commanders in chief (i.e. not admirals)
+        limit = {
+            this = {
+                NOT = {
+                    has_role = admiral
+                }
+            }
+        }
+        multiply = 3
+    }
+}
 ACL_commander_unit_cap = {
-    value = 0
+    value = 1
     
     # Calculate multipliers
     # Modifiers in Clausewitz are additive, btw
@@ -34,4 +49,47 @@ ACL_commander_unit_cap = {
         }
         subtract = 0.2
     }
+    
+    # Skill: Traditionalist Commander
+    if = {
+        limit = {
+            this = {
+                has_trait = traditionalist_commander
+            }
+        }
+        add = 0.1
+    }
+    
+    # Skill: Popular Commander
+    if = {
+        limit = {
+            this = {
+                has_trait = popular_commander
+            }
+        }
+        add = 0.2
+    }
+    
+    # Skill: Celebrity Commander
+    if = {
+        limit = {
+            this = {
+                has_trait = celebrity_commander
+            }
+        }
+        add = 0.3
+    }
+    
+    # Calculate actual cap
+    multiply = ACL_commander_base_unit_cap
+}
+
+# Gets magnitude mulitplier for overstacking debuff
+# Debuff maxes at N% at 25% beyond command limit, both scaling linearly
+ACL_overstacking_penalty_mult = {
+    value    = num_units
+    divide   = ACL_commander_unit_cap
+    subtract = 1
+    min      = 0
+    multiply = 4 # Same as `divide = 0.25`, but multiplication is more performant
 }

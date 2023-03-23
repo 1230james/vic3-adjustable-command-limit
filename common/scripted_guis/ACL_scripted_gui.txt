@@ -1,7 +1,5 @@
 ﻿ACL_sgui_cut_75 = {
     scope = character
-    type  = scripted_gui
-    saved_scopes = {}
     
     is_shown = {
         always = yes
@@ -24,8 +22,6 @@
 
 ACL_sgui_cut_50 = {
     scope = character
-    type  = scripted_gui
-    saved_scopes = {}
     
     is_shown = {
         always = yes
@@ -48,8 +44,6 @@ ACL_sgui_cut_50 = {
 
 ACL_sgui_cut_25 = {
     scope = character
-    type  = scripted_gui
-    saved_scopes = {}
     
     is_shown = {
         always = yes
@@ -72,8 +66,6 @@ ACL_sgui_cut_25 = {
 
 ACL_sgui_normal = {
     scope = character
-    type  = scripted_gui
-    saved_scopes = {}
     
     is_shown = {
         always = yes
@@ -99,8 +91,6 @@ ACL_sgui_normal = {
 
 ACL_sgui_over_25 = {
     scope = character
-    type  = scripted_gui
-    saved_scopes = {}
     
     is_shown = {
         always = yes
