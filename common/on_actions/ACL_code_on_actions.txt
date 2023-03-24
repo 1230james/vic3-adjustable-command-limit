@@ -13,12 +13,15 @@ on_battle_started = {
             }
             if = {
                 limit  = {
+                    NOT = {
+                        has_modifier = ACL_overstacking_penalty_modifier
+                    }
                     has_trait = ACL_lim_over_25_trait
-                    var:penalty_mult > 0
+                    ACL_overstacking_penalty_mult > 0 #var:penalty_mult > 0
                 }
                 add_modifier = {
                     name       = ACL_overstacking_penalty_modifier
-                    multiplier = var:penalty_mult
+                    multiplier = ACL_overstacking_penalty_mult #var:penalty_mult
                     months     = -1
                 }
             }

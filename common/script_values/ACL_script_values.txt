@@ -87,9 +87,29 @@ ACL_commander_unit_cap = {
 # Gets magnitude mulitplier for overstacking debuff
 # Debuff maxes at N% at 25% beyond command limit, both scaling linearly
 ACL_overstacking_penalty_mult = {
-    value    = num_units
-    divide   = ACL_commander_unit_cap
+    # Fetch number of units + unit cap
+    # Considerations need to be made for on_battle_started, which calls this in country scope for some reason
+    if = {
+        limit = {
+            exists = scope:attacker
+        }
+        value  = scope:attacker.num_units
+        divide = scope:attacker.ACL_commander_unit_cap
+    }
+    else_if = {
+        limit = {
+            exists = scope:defender
+        }
+        value  = scope:defender.num_units
+        divide = scope:defender.ACL_commander_unit_cap
+    }
+    else = { # properly calling from character scope, hopefully
+        value  = num_units
+        divide = ACL_commander_unit_cap
+    }
     subtract = 1
     min      = 0
     multiply = 4 # Same as `divide = 0.25`, but multiplication is more performant
 }
+
+ACL_debug_penalty_75 = 0.75
