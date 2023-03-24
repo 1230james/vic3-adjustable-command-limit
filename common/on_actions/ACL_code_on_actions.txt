@@ -6,26 +6,23 @@
 #   scope:state = location state
 on_battle_started = {
     effect = {
-        scope:attacker = {
-            
-            ### TODO: Figure out how to use variables here to avoid double computation
-            
-            #set_variable = {
-            #    name  = unit_cap
-            #    value = ACL_overstacking_penalty_mult
-            #}
+        scope:attacker = {   # This logic works from the character info screen but not in here
+            set_variable = { # TODO: Fix it or find a workaround
+                name  = penalty_mult
+                value = ACL_overstacking_penalty_mult
+            }
             if = {
                 limit  = {
                     has_trait = ACL_lim_over_25_trait
-                    ACL_overstacking_penalty_mult > 0 #scope:unit_cap > 0
+                    var:penalty_mult > 0
                 }
                 add_modifier = {
                     name       = ACL_overstacking_penalty_modifier
-                    multiplier = ACL_overstacking_penalty_mult #scope:unit_cap
+                    multiplier = var:penalty_mult
                     months     = -1
                 }
             }
-            #remove_variable = unit_cap
+            remove_variable = penalty_mult
         }
         scope:defender = {
             # TODO
@@ -40,20 +37,22 @@ on_battle_started = {
 #   scope:defender = defending commander
 #   scope:state = location state
 on_battle_ended = {
-    scope:attacker = {
-        if = {
-            limit = {
-                has_modifier = ACL_overstacking_penalty_modifier
+    effect = {
+        scope:attacker = { # TODO: Verify these work and fix if needed (I think they might be broken)
+            if = {
+                limit = {
+                    has_modifier = ACL_overstacking_penalty_modifier
+                }
+                remove_modifier = ACL_overstacking_penalty_modifier
             }
-            remove_modifier = ACL_overstacking_penalty_modifier
         }
-    }
-    scope:defender = {
-        if = {
-            limit = {
-                has_modifier = ACL_overstacking_penalty_modifier
+        scope:defender = {
+            if = {
+                limit = {
+                    has_modifier = ACL_overstacking_penalty_modifier
+                }
+                remove_modifier = ACL_overstacking_penalty_modifier
             }
-            remove_modifier = ACL_overstacking_penalty_modifier
         }
     }
 }
