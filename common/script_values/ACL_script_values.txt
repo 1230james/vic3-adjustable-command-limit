@@ -111,5 +111,3 @@ ACL_overstacking_penalty_mult = {
     min      = 0
     multiply = 4 # Same as `divide = 0.25`, but multiplication is more performant
 }
-
-ACL_debug_penalty_75 = 0.75
