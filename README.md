@@ -12,12 +12,12 @@ This poses an issue for strategy. There are times were the player may want to ke
 
 ACL aims to solve that by adding buttons on the commander information screens allowing players to adjust the size of one commander's forces dynamically regardless of rank or character traits, allowing for greater strategic flexibility and alleviating some annoyances experienced in the base game.
 
-For more information, visit the Steam Workshop page! (Link TBD)
+For more information, visit the [Steam Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=2951960564)!
 
 ## Installation
 
-1. Install via the Steam Workshop, OR
+1. Install via [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2951960564), OR
 
-2. Install via Paradox, OR
+2. Install via [Paradox Mods](https://mods.paradoxplaza.com/mods/59595/Any), OR
 
 3. Clone this repository and install into the Vic3 mods folder manually.
