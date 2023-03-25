@@ -91,7 +91,7 @@ types commander_panel_types
 
 
 				widget = {
-					minimumsize = { @panel_width_plus_14 520 }
+					minimumsize = { @panel_width_plus_14 570 }
 					### TODO: fix the backgrounds to fit the set container size (currently 540 x 600)
 					widget = {
 						size = { 100% 100% }
@@ -382,7 +382,7 @@ types commander_panel_types
 
 						flowcontainer = {
 							parentanchor = right|vcenter
-							position = { 0 -10 }
+							position = { 0 -5 }
 							margin_left = 5
 							margin_bottom = 7
 							margin_top = 7
