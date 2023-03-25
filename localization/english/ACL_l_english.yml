@@ -1,7 +1,7 @@
 ﻿l_english:
     # Traits
     ACL_lim_cut_75_trait:0  "Limited Forces"
-    ACL_lim_cut_50_trait:0  "Dimished Forces"
+    ACL_lim_cut_50_trait:0  "Diminished Forces"
     ACL_lim_cut_25_trait:0  "Reduced Forces"
     ACL_lim_over_25_trait:0 "Expanded Forces"
 
