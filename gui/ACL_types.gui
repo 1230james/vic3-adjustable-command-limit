@@ -3,7 +3,7 @@ types ACL_gui_types {
         ### VERY LOW
         set_level_bar_item = {
             block "tooltip_1" {
-                tooltip = "Reduce command limit by 75%." # TODO
+                tooltip = ACL_tt_cut_75
             }
             blockoverride "button_texture" {
                 texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_low.dds"
@@ -30,7 +30,7 @@ types ACL_gui_types {
         ### LOW
         set_level_bar_item = {
             block "tooltip_2" {
-                tooltip = "Reduce command limit by 50%." # TODO
+                tooltip = ACL_tt_cut_50
             }
             blockoverride "button_texture" {
                 texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_low.dds"
@@ -57,7 +57,7 @@ types ACL_gui_types {
         ### MEDIUM
         set_level_bar_item = {
             block "tooltip_3" {
-                tooltip = "Reduce command limit by 25%." # TODO
+                tooltip = ACL_tt_cut_25
             }
             blockoverride "button_texture" {
                 texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_medium.dds"
@@ -84,7 +84,7 @@ types ACL_gui_types {
         ### HIGH
         set_level_bar_item = {
             block "tooltip_4" {
-                tooltip = "Set command limit to normal." # TODO
+                tooltip = ACL_tt_normal
             }
             blockoverride "button_texture" {
                 texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_high.dds"
@@ -111,7 +111,7 @@ types ACL_gui_types {
         ### VERY HIGH
         set_level_bar_item = {
             block "tooltip_5" {
-                tooltip = "Increase command limit by 25%." # TODO
+                tooltip = ACL_tt_over_25
             }
             blockoverride "button_texture" {
                 texture = "gfx/interface/ACL_command_limit/ACL_cmd_lim_set_very_high.dds"

@@ -13,3 +13,45 @@
     # Modifiers
     ACL_overstacking_penalty_modifier:0 "Overburdened Commander"
     
+    # Tooltip Math
+    ACL_tt_cut_75_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75')]"
+    ACL_tt_cut_75_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75_conscripts')]"
+    ACL_tt_cut_75_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75_total')]"
+    
+    ACL_tt_cut_50_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50')]"
+    ACL_tt_cut_50_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50_conscripts')]"
+    ACL_tt_cut_50_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50_total')]"
+    
+    ACL_tt_cut_25_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25')]"
+    ACL_tt_cut_25_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25_conscripts')]"
+    ACL_tt_cut_25_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25_total')]"
+    
+    ACL_tt_normal_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal')]"
+    ACL_tt_normal_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal_conscripts')]"
+    ACL_tt_normal_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal_total')]"
+    
+    ACL_tt_over_25_units:0      "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25')]"
+    ACL_tt_over_25_conscripts:0 "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25_conscripts')]"
+    ACL_tt_over_25_total:0      "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25_total')]"
+    
+    # Button Tooltips
+    ACL_tt_cut_75:0 "#t $ACL_lim_cut_75_trait$#!\nLower the [concept_command_limit] to 25% of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 25% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_75')]"
+    ACL_tt_cut_75_general:0 "$ACL_tt_cut_75_total$#!:\n    #v $ACL_tt_cut_75_units$#! Regular [concept_battalion]\n    #v $ACL_tt_cut_75_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_75_admiral:0 "$ACL_tt_cut_75_units$#!:\n    $ACL_tt_cut_75_units$ [concept_flotilla]"
+    
+    ACL_tt_cut_50:0 "#t $ACL_lim_cut_50_trait$#!\nLower the [concept_command_limit] to 50% of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 50% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_50')]"
+    ACL_tt_cut_50_general:0 "$ACL_tt_cut_50_total$#!:\n    #v $ACL_tt_cut_50_units$#! Regular [concept_battalion]\n    #v $ACL_tt_cut_50_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_50_admiral:0 "$ACL_tt_cut_50_units$#!:\n    $ACL_tt_cut_50_units$ [concept_flotilla]"
+    
+    ACL_tt_cut_25:0 "#t $ACL_lim_cut_25_trait$#!\nLower the [concept_command_limit] to 75% of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 75% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_25')]"
+    ACL_tt_cut_25_general:0 "$ACL_tt_cut_25_total$#!:\n    #v $ACL_tt_cut_25_units$#! Regular [concept_battalion]\n    #v $ACL_tt_cut_25_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_25_admiral:0 "$ACL_tt_cut_25_units$#!:\n    $ACL_tt_cut_25_units$ [concept_flotilla]"
+    
+    ACL_tt_normal:0 "#t Normal Forces#!\nLeave the [concept_command_limit] at their normal limit.\n$TOOLTIP_DELIMITER$\nAt their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_normal')]"
+    ACL_tt_normal_general:0 "$ACL_tt_normal_total$#!:\n    #v $ACL_tt_normal_units$#! Regular [concept_battalion]\n    #v $ACL_tt_normal_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_normal_admiral:0 "$ACL_tt_normal_units$#!:\n    $ACL_tt_normal_units$ [concept_flotilla]"
+    
+    ACL_tt_over_25:0 "#t $ACL_lim_over_25_trait$#!\nRaise the [concept_command_limit] to 125% of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 125% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_over_25')]"
+    ACL_tt_over_25_general:0 "$ACL_tt_over_25_total$#!:\n    #v $ACL_tt_over_25_units$#! Regular [concept_battalion]\n    #v $ACL_tt_over_25_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_over_25_admiral:0 "$ACL_tt_over_25_units$#!:\n    $ACL_tt_over_25_units$ [concept_flotilla]"
+    
