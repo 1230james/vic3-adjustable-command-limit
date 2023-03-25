@@ -1,0 +1,112 @@
+﻿ACL_sgui_cut_75 = {
+    scope = character
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        NOT = {
+            has_trait = ACL_lim_cut_75_trait
+        }
+    }
+    
+    effect = {
+        add_trait          = ACL_lim_cut_75_trait
+        remove_trait       = ACL_lim_cut_50_trait
+        remove_trait       = ACL_lim_cut_25_trait
+        remove_trait       = ACL_lim_over_25_trait
+        add_commander_rank = 0 # Forces game to recalculate battalion/flotilla limit. Why is this necessary? idfk lol!
+    }
+}
+
+ACL_sgui_cut_50 = {
+    scope = character
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        NOT = {
+            has_trait = ACL_lim_cut_50_trait
+        }
+    }
+    
+    effect = {
+        remove_trait       = ACL_lim_cut_75_trait
+        add_trait          = ACL_lim_cut_50_trait
+        remove_trait       = ACL_lim_cut_25_trait
+        remove_trait       = ACL_lim_over_25_trait
+        add_commander_rank = 0
+    }
+}
+
+ACL_sgui_cut_25 = {
+    scope = character
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        NOT = {
+            has_trait = ACL_lim_cut_25_trait
+        }
+    }
+    
+    effect = {
+        remove_trait       = ACL_lim_cut_75_trait
+        remove_trait       = ACL_lim_cut_50_trait
+        add_trait          = ACL_lim_cut_25_trait
+        remove_trait       = ACL_lim_over_25_trait
+        add_commander_rank = 0
+    }
+}
+
+ACL_sgui_normal = {
+    scope = character
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        OR = {
+            has_trait = ACL_lim_cut_75_trait
+            has_trait = ACL_lim_cut_50_trait
+            has_trait = ACL_lim_cut_25_trait
+            has_trait = ACL_lim_over_25_trait
+        }
+    }
+    
+    effect = {
+        remove_trait       = ACL_lim_cut_75_trait
+        remove_trait       = ACL_lim_cut_50_trait
+        remove_trait       = ACL_lim_cut_25_trait
+        remove_trait       = ACL_lim_over_25_trait
+        add_commander_rank = 0
+    }
+}
+
+ACL_sgui_over_25 = {
+    scope = character
+    
+    is_shown = {
+        always = yes
+    }
+    
+    is_valid = {
+        NOT = {
+            has_trait = ACL_lim_over_25_trait
+        }
+    }
+    
+    effect = {
+        remove_trait       = ACL_lim_cut_75_trait
+        remove_trait       = ACL_lim_cut_50_trait
+        remove_trait       = ACL_lim_cut_25_trait
+        add_trait          = ACL_lim_over_25_trait
+        add_commander_rank = 0
+    }
+}
