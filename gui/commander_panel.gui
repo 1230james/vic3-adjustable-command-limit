@@ -444,7 +444,7 @@ types commander_panel_types
                             
                             ### Command Limit Adjustment
                             ACL_command_limit_selection = {
-                                visible = "[Or(Character.IsGeneral, Character.IsAdmiral)]"
+                                visible = "[And( Or(Character.IsGeneral, Character.IsAdmiral) , Not( Character.GetCountry.IsAIOrOtherPlayer ) )]"
                             }
 
 							### BATTALIONS, ATTRITION, MORALE

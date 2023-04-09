@@ -10,7 +10,7 @@ types ACL_gui_types {
                 visible = yes
             }
             blockoverride "click" {
-                using = budget_coins_lvl_1_button_sound
+                using = ACL_cut_75_sound
                 datacontext = "[GetScriptedGui('ACL_sgui_cut_75')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
@@ -37,7 +37,7 @@ types ACL_gui_types {
                 visible = yes
             }
             blockoverride "click" {
-                using = budget_coins_lvl_2_button_sound
+                using = ACL_cut_50_sound
                 datacontext = "[GetScriptedGui('ACL_sgui_cut_50')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
@@ -64,7 +64,7 @@ types ACL_gui_types {
                 visible = yes
             }
             blockoverride "click" {
-                using = budget_coins_lvl_3_button_sound
+                using = ACL_cut_25_sound
                 datacontext = "[GetScriptedGui('ACL_sgui_cut_25')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
@@ -91,7 +91,7 @@ types ACL_gui_types {
                 visible = yes
             }
             blockoverride "click" {
-                using = budget_coins_lvl_4_button_sound
+                using = ACL_normal_sound
                 datacontext = "[GetScriptedGui('ACL_sgui_normal')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
@@ -118,7 +118,7 @@ types ACL_gui_types {
                 visible = yes
             }
             blockoverride "click" {
-                using = budget_coins_lvl_5_button_sound
+                using = ACL_over_25_sound
                 datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
