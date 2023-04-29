@@ -97,3 +97,21 @@ ACL_cl_tt_over_25 = {
 		localization_key = ACL_tt_over_25_general
 	}
 }
+
+ACL_cl_tt_over_25_main = {
+    type = character
+	random_valid = no
+
+	text = {
+		trigger = {
+            has_game_rule = ACL_allow_overstacking_yes
+		}
+		localization_key = ACL_tt_over_25_main
+	}
+    text = {
+		trigger = {
+           has_game_rule = ACL_allow_overstacking_no
+		}
+		localization_key = ACL_tt_over_25_disabled
+	}
+}

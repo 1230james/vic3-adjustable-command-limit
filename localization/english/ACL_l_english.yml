@@ -13,6 +13,13 @@
     # Modifiers
     ACL_overstacking_penalty_modifier:0 "Overburdened Commander"
     
+    # Game Rules
+    rule_ACL_allow_overstacking:0             "ACL | Allow $ACL_lim_over_25_trait$"
+    setting_ACL_allow_overstacking_yes:0      "Yes"
+    setting_ACL_allow_overstacking_yes_desc:0 "Overstacking commanders to #v 125%#! of their normal [concept_command_limit] #p will be allowed#! in exchange for a combat penalty."
+    setting_ACL_allow_overstacking_no:0       "No"
+    setting_ACL_allow_overstacking_no_desc:0  "Overstacking commanders to #v 125%#! of their normal [concept_command_limit] #n will not be allowed.#!"
+    
     # Tooltip Math
     ACL_tt_cut_75_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75')]"
     ACL_tt_cut_75_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75_conscripts')]"
@@ -51,7 +58,8 @@
     ACL_tt_normal_general:0 "$ACL_tt_normal_total$#!:\n    #v $ACL_tt_normal_units$#! Regular [concept_battalion]\n    #v $ACL_tt_normal_conscripts$#! Conscript [concept_battalion]"
     ACL_tt_normal_admiral:0 "$ACL_tt_normal_units$#!:\n    $ACL_tt_normal_units$ [concept_flotilla]"
     
-    ACL_tt_over_25:0 "#t $ACL_lim_over_25_trait$#!\nRaise the [concept_command_limit] to #v 125%#! of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 125% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_over_25')], they will become #n overburdened#! and perform poorly in combat, facing up to the following penalties if they reach #v 125%#! of their normal limit:\n\n[GetStaticModifier('ACL_overstacking_penalty_modifier').GetDesc][AddTextIf(Character.IsInBattle, '\n\n#italic The command limit can only be adjusted when the commander is not in battle.#!')]"
-    ACL_tt_over_25_general:0 "$ACL_tt_over_25_total$#!:\n    #v $ACL_tt_over_25_units$#! Regular [concept_battalion]\n    #v $ACL_tt_over_25_conscripts$#! Conscript [concept_battalion]\n$TOOLTIP_DELIMITER$\nIf [Character.GetFullName] commands more than their normal limit of #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_total$#!"
-    ACL_tt_over_25_admiral:0 "$ACL_tt_over_25_units$#!:\n    $ACL_tt_over_25_units$ [concept_flotilla]\n$TOOLTIP_DELIMITER$\nIf [Character.GetFullName] commands more than their normal limit of #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_units$#!"
-    
+    ACL_tt_over_25:0      "[Character.GetCustom('ACL_cl_tt_over_25_main')]"
+    ACL_tt_over_25_main:0 "#t $ACL_lim_over_25_trait$#!\nRaise the [concept_command_limit] to #v 125%#! of their normal limit.\n$TOOLTIP_DELIMITER$\nAt 125% of their normal limit, [Character.GetFullName] will command #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_over_25')], they will become #n overburdened#! and perform poorly in combat, facing up to the following penalties if they reach #v 125%#! of their normal limit:\n\n[GetStaticModifier('ACL_overstacking_penalty_modifier').GetDesc][AddTextIf(Character.IsInBattle, '\n\n#italic The command limit can only be adjusted when the commander is not in battle.#!')]"
+    ACL_tt_over_25_general:0  "$ACL_tt_over_25_total$#!:\n    #v $ACL_tt_over_25_units$#! Regular [concept_battalion]\n    #v $ACL_tt_over_25_conscripts$#! Conscript [concept_battalion]\n$TOOLTIP_DELIMITER$\nIf [Character.GetFullName] commands more than their normal limit of #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_total$#!"
+    ACL_tt_over_25_admiral:0  "$ACL_tt_over_25_units$#!:\n    $ACL_tt_over_25_units$ [concept_flotilla]\n$TOOLTIP_DELIMITER$\nIf [Character.GetFullName] commands more than their normal limit of #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_units$#!"
+    ACL_tt_over_25_disabled:0 "#t $ACL_lim_over_25_trait$#!\n$TOOLTIP_DELIMITER$\nThis button has been #n disabled#! by a Game Rule."

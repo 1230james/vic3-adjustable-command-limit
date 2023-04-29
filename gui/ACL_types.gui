@@ -122,8 +122,14 @@ types ACL_gui_types {
                 datacontext = "[GetScriptedGui('ACL_sgui_over_25')]"
                 onclick     = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End )]"
                 enabled     = "[And(
-                    ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ),
-                    Not( Character.IsInBattle )
+                    And(
+                        ScriptedGui.IsValid( GuiScope.SetRoot( Character.MakeScope ).End ),
+                        Not( Character.IsInBattle )
+                    ),
+                    EqualTo_string(
+                        AccessGameRules.AccessNamedGameRule('ACL_allow_overstacking').GetSetting.GetKey,
+                        'ACL_allow_overstacking_yes'
+                    )
                 )]"
             }
             blockoverride "setvisible" {
