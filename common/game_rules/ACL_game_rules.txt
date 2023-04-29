@@ -1,0 +1,6 @@
+﻿ACL_allow_overstacking = {
+    default = ACL_allow_overstacking_yes
+    
+    ACL_allow_overstacking_yes = {}
+    ACL_allow_overstacking_no  = {}
+}
