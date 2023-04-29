@@ -5,6 +5,12 @@
 #   scope:defender = defending commander
 #   scope:state = location state
 on_battle_started = {
+    on_actions = {            # on_actions in on_actions are the only thing that append, not overwrite (apparently?)
+        ACL_oa_battle_started # so we're doing this for better mod compatibility
+    }
+}
+
+ACL_oa_battle_started = {
     effect = {
         scope:attacker = {
             if = {
@@ -67,6 +73,12 @@ on_battle_started = {
 #   scope:defender = defending commander
 #   scope:state = location state
 on_battle_ended = {
+    on_actions = {
+        ACL_oa_battle_ended
+    }
+}
+
+ACL_oa_battle_ended = {
     effect = {
         scope:attacker = {
             if = {
