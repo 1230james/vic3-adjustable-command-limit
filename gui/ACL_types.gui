@@ -149,8 +149,8 @@ types ACL_gui_types {
         block "command_limit_controls" {
             ACL_set_level_bar_cmd_lim = {
                 position = { 0 0 }
-                parentanchor = left|vcenter
-                margin_left = 9
+                parentanchor = center
+                margin_left = 12
             }
         }
     }
