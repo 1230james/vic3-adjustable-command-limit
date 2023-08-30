@@ -1,0 +1,65 @@
+﻿l_polish:
+    # Traits
+    ACL_lim_cut_75_trait:0  "Ograniczone Siły"
+    ACL_lim_cut_50_trait:0  "Zmniejszone siły"
+    ACL_lim_cut_25_trait:0  "Zredukowane Siły"
+    ACL_lim_over_25_trait:0 "Wzmocnione Siły"
+
+    ACL_lim_cut_75_trait_desc:0  "Ten dowódca otrzymał rozkaz znacznego ograniczenia liczebności swoich sił do jednej czwartej ich normalnej wielkości."
+    ACL_lim_cut_50_trait_desc:0  "Ten dowódca otrzymał rozkaz zmniejszenia liczebności swoich sił do połowy ich normalnej wielkości."
+    ACL_lim_cut_25_trait_desc:0  "Ten dowódca otrzymał rozkaz zmniejszenia liczebności swoich sił do trzech czwartych ich normalnej wielkości."
+    ACL_lim_over_25_trait_desc:0 "Ten dowódca otrzymał rozkaz dowodzenia dodatkowymi sił poza jego normalnym możliwym limitem."
+    
+    # Modifiers
+    ACL_overstacking_penalty_modifier:0 "Przeciążony Dowódca"
+    
+    # Game Rules
+    rule_ACL_allow_overstacking:0             "ACL | Zezwól $ACL_lim_over_25_trait$"
+    setting_ACL_allow_overstacking_yes:0      "Tak"
+    setting_ACL_allow_overstacking_yes_desc:0 "Przeciążanie Dowódców do #v 125%#! ich normalnego [concept_command_limit] #p Będzie dozwolone#! w zamian za karę bojową."
+    setting_ACL_allow_overstacking_no:0       "Nie"
+    setting_ACL_allow_overstacking_no_desc:0  "Przeciążanie Dowódców do #v 125%#! ich normalnego [concept_command_limit] #n Nie będzie dozwolone.#!"
+    
+    # Tooltip Math
+    ACL_tt_cut_75_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75')]"
+    ACL_tt_cut_75_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75_conscripts')]"
+    ACL_tt_cut_75_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_75_total')]"
+    
+    ACL_tt_cut_50_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50')]"
+    ACL_tt_cut_50_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50_conscripts')]"
+    ACL_tt_cut_50_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_50_total')]"
+    
+    ACL_tt_cut_25_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25')]"
+    ACL_tt_cut_25_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25_conscripts')]"
+    ACL_tt_cut_25_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_cut_25_total')]"
+    
+    ACL_tt_normal_units:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal')]"
+    ACL_tt_normal_conscripts:0  "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal_conscripts')]"
+    ACL_tt_normal_total:0       "[Character.MakeScope.ScriptValue('ACL_loc_sv_normal_total')]"
+    
+    ACL_tt_over_25_units:0      "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25')]"
+    ACL_tt_over_25_conscripts:0 "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25_conscripts')]"
+    ACL_tt_over_25_total:0      "[Character.MakeScope.ScriptValue('ACL_loc_sv_over_25_total')]"
+    
+    # Button Tooltips
+    ACL_tt_cut_75:0 "#t $ACL_lim_cut_75_trait$#!\nObniż [concept_command_limit] do #v 25%#! ich normalnego limitu.\n$TOOLTIP_DELIMITER$\nPrzy 25% ich normalnego limitu, [Character.GetFullName] będą dowodzić #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_75')][AddTextIf(Character.IsInBattle, '\n\n#italic Limit Dowodzenia można zmienić tylko wtedy, gdy dowódca nie bierze udziału w bitwie.#!')]"
+    ACL_tt_cut_75_general:0 "$ACL_tt_cut_75_total$#!:\n #v $ACL_tt_cut_75_units$#! Regular [concept_battalion]\n #v $ACL_tt_cut_75_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_75_admiral:0 "$ACL_tt_cut_75_units$#!:\n $ACL_tt_cut_75_units$ [concept_flotilla]"
+
+    ACL_tt_cut_50:0 "#t $ACL_lim_cut_50_trait$#!\nObniż [concept_command_limit] do #v 50%#! ich normalnego limitu.\n$TOOLTIP_DELIMITER$\nPrzy 50% ich normalnego limitu, [Character.GetFullName] będą dowodzić #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_50')][AddTextIf(Character.IsInBattle, '\n\n#italic Limit Dowodzenia można zmienić tylko wtedy, gdy dowódca nie bierze udziału w bitwie.#!')]"
+    ACL_tt_cut_50_general:0 "$ACL_tt_cut_50_total$#!:\n #v $ACL_tt_cut_50_units$#! Regular [concept_battalion]\n #v $ACL_tt_cut_50_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_50_admiral:0 "$ACL_tt_cut_50_units$#!:\n $ACL_tt_cut_50_units$ [concept_flotilla]"
+
+    ACL_tt_cut_25:0 "#t $ACL_lim_cut_25_trait$#!\nObniż [concept_command_limit] do #v 75%#! ich normalnego limitu.\n$TOOLTIP_DELIMITER$\nPrzy 75% ich normalnego limitu, [Character.GetFullName] będą dowodzić #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_cut_25')][AddTextIf(Character.IsInBattle, '\n\n#italic Limit Dowodzenia można zmienić tylko wtedy, gdy dowódca nie bierze udziału w bitwie.#!')]"
+    ACL_tt_cut_25_general:0 "$ACL_tt_cut_25_total$#!:\n #v $ACL_tt_cut_25_units$#! Regular [concept_battalion]\n #v $ACL_tt_cut_25_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_cut_25_admiral:0 "$ACL_tt_cut_25_units$#!:\n $ACL_tt_cut_25_units$ [concept_flotilla]"
+
+    ACL_tt_normal:0 "#t Normalne Siły#!\nPozostaw [concept_command_limit] normalny limit.\n$TOOLTIP_DELIMITER$\nPrzy jego normalnym limicie, [Character.GetFullName] będą dowodzić #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_normal')][AddTextIf(Character.IsInBattle, '\n\n#italic Limit Dowodzenia można zmienić tylko wtedy, gdy dowódca nie bierze udziału w bitwie.#!')]"
+    ACL_tt_normal_general:0 "$ACL_tt_normal_total$#!:\n #v $ACL_tt_normal_units$#! Regular [concept_battalion]\n #v $ACL_tt_normal_conscripts$#! Conscript [concept_battalion]"
+    ACL_tt_normal_admiral:0 "$ACL_tt_normal_units$#!:\n $ACL_tt_normal_units$ [concept_flotilla]"
+
+    ACL_tt_over_25:0 "[Character.GetCustom('ACL_cl_tt_over_25_main')]"
+    ACL_tt_over_25_main:0 "#t $ACL_lim_over_25_trait$#!\nPodnieś [concept_command_limit] do #v 125%#! ich normalnego limitu.\n$TOOLTIP_DELIMITER$\nPrzy 125% ich normalnego limitu, [Character.GetFullName] będą dowodzić #v [Character.GetStrengthPointsIcon][Character.GetCustom('ACL_cl_tt_over_25')], ale staną się oni #n overburdened#! i słabsi w ciągu bitew, stawiając czoła następującym karom, jeśli osiągną #v 125%#! ich normalnego limitu:\n\n[GetStaticModifier('ACL_overstacking_penalty_modifier').GetDesc][AddTextIf(Character.IsInBattle, '\n\n#italic Limit Dowodzenia można zmienić tylko wtedy, gdy dowódca nie bierze udziału w bitwie.#!')]"
+    ACL_tt_over_25_general:0 "$ACL_tt_over_25_total$#!:\n #v $ACL_tt_over_25_units$#! Regular [concept_battalion]\n #v $ACL_tt_over_25_conscripts$#! Conscript [concept_battalion]\n$TOOLTIP_DELIMITER$\nJeśli [Character.GetFullName] dowodzi większą ilością niż wynosi jego normalny limit #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_total$#!"
+    ACL_tt_over_25_admiral:0 "$ACL_tt_over_25_units$#!:\n $ACL_tt_over_25_units$ [concept_flotilla]\n$TOOLTIP_DELIMITER$\nJeśli [Character.GetFullName] dowodzi większą ilością niż wynosi jego normalny limit #v [Character.GetStrengthPointsIcon]$ACL_tt_normal_units$#!"
+    ACL_tt_over_25_disabled:0 "#t $ACL_lim_over_25_trait$#!\n$TOOLTIP_DELIMITER$\nTen przycisk jest #n niedostępny#! przez Zasady Gry."
