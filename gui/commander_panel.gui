@@ -16,6 +16,7 @@ types commander_panel_types
 		# background
 		widget = {
 			size = { 100% 100% }
+			position = { 0 1 }
 			using = Animation_Character_Panel_Refresh
 			
 			# Ruler General
@@ -213,7 +214,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -238,7 +239,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -263,7 +264,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -288,7 +289,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -313,7 +314,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -338,7 +339,7 @@ types commander_panel_types
 
 			blockoverride "portrait_size" {
 				block "character_portrait_size" {
-					size = { 650 650 }
+					size = { 620 620 }
 				}
 			}
 
@@ -356,7 +357,8 @@ types commander_panel_types
 			using = dark_area
 			parentanchor = bottom|hcenter
 			size = { 100% 50% }
-			alpha = 0.9
+			alpha = 0.85
+			position = { 0 2 }
 
 			modify_texture = {
 				texture = "gfx/interface/masks/fade_vertical_top.dds"
@@ -391,11 +393,15 @@ types commander_panel_types
 	type commander_panel = default_block_window_two_lines {
 		name = "commander_panel"
 
+		datacontext = "[CommanderPanel.AccessCharacter]"
+
 		blockoverride "animation_state_block" {
+			datacontext = "[CommanderPanel.AccessCharacter]"
+
 			state = {
 				name = _show
 
-				on_start = "[PdxGuiTriggerAllAnimations(Select_CString( Character.IsAgitator, 'agitator', 'not_agitator' ))]"
+				on_start = "[PdxGuiTriggerAllAnimations(Select_CString( CommanderPanel.AccessCharacter.IsAgitator, 'agitator', 'not_agitator' ))]"
 			}
 
 			state = {
@@ -409,7 +415,7 @@ types commander_panel_types
 			state = {
 				name = agitator
 
-				on_start = "[PdxGuiTriggerAllAnimations(Select_CString( Character.IsHistorical, 'historical_agitator', 'generic_agitator' ))]"
+				on_start = "[PdxGuiTriggerAllAnimations(Select_CString( CommanderPanel.AccessCharacter.IsHistorical, 'historical_agitator', 'generic_agitator' ))]"
 			}
 
 			state = {
@@ -430,13 +436,12 @@ types commander_panel_types
 
 			state = {
 				name = _hide
+				
 				start_sound = {
 					soundeffect = "event:/SFX/UI/SideBar/budget_stop"
 				}
 			}
 		}
-
-		datacontext = "[CommanderPanel.AccessCharacter]"
 
 		blockoverride "window_header_name" {
 			text = "[Character.GetCustom('GetUniversalFullName')]"
@@ -446,28 +451,51 @@ types commander_panel_types
 			text = "CHARACTER_PANEL_SUBTITLE"
 		}
 
+		blockoverride "goto_visibility" {
+			visible = "[Not(Character.IsInExilePool)]"
+		}
+		blockoverride "goto_properties" {
+			datacontext = "[Character.GetCountry]"
+			tooltip = "ZOOM_TO_LOCATION"
+			onclick = "[Character.ZoomToLocation]"
+		}
+
 		blockoverride "goto_button" {
-			button_icon_goto = {
-				size = { 30 30 }
-				visible = "[Not( Character.IsInExilePool )]"
-				datacontext = "[Character.GetCountry]"
-				tooltip = "GO_TO_BUTTON_COUNTRY"
-				onclick = "[InformationPanelBar.OpenCountryPanel(Character.GetCountry.Self)]"
-			}
-			button_icon_goto = {
+			button_icon_goto = { # Character IS Exile
 				size = { 30 30 }
 				visible = "[And(Character.IsInExilePool, GetVariableSystem.Exists('politics_overview_exile_pool'))]"
 				datacontext = "[Character.GetCountry]"
 				tooltip = "GO_TO_BUTTON_EXILED_AGITATORS"
 				onclick = "[InformationPanelBar.OpenPanelTab( 'politics', 'default' )]"
 			}
-			button_icon_goto = {
+			button_icon_goto = { # Character IS Exile
 				size = { 30 30 }
 				visible = "[And(Character.IsInExilePool, Not(GetVariableSystem.Exists('politics_overview_exile_pool')))]"
 				datacontext = "[Character.GetCountry]"
 				tooltip = "GO_TO_BUTTON_EXILED_AGITATORS"
 				onclick = "[InformationPanelBar.OpenPanelTab( 'politics', 'default' )]"
 				onclick = "[GetVariableSystem.Toggle('politics_overview_exile_pool')]"
+			}
+			button_icon_goto = { #character is General at front
+				size = { 30 30 }
+				visible = "[And( Character.IsGeneral, Character.IsAtFront )  ]"
+				datacontext = "[Character.GetFront]"
+				tooltip = "GO_TO_BUTTON_FRONT"
+				onclick = "[InformationPanelBar.OpenFrontPanel(Character.GetFront)]"
+			}
+			button_icon_goto = { # character is Admiral with the order of raiding convoys
+				size = { 30 30 }
+				visible = "[And(Character.IsAdmiral, Character.GetCommanderOrder.GetType.IsRaidConvoys) ]"
+				datacontext = "[Character.GetCommanderOrder.GetConvoyRaidingProvince.GetStateRegion]"
+				tooltip = "GO_TO_BUTTON_SEA_REGION"
+				onclick = "[InformationPanelBar.OpenSeaRegionPanel(Character.GetCommanderOrder.GetConvoyRaidingProvince)]"
+			}
+			button_icon_goto = { #All other cases
+				size = { 30 30 }
+				visible = "[And( And( Not( Character.IsInExilePool ) , Not( And( Character.IsGeneral, Character.IsAtFront ))) ,  Not( And( Character.IsAdmiral, Character.GetCommanderOrder.GetType.IsRaidConvoys ) ) )]"
+				datacontext = "[Character.GetCountry]"
+				tooltip = "GO_TO_BUTTON_COUNTRY"
+				onclick = "[InformationPanelBar.OpenCountryPanel(Character.GetCountry)]"
 			}
 		}
 
@@ -529,15 +557,15 @@ types commander_panel_types
 
 
 				widget = {
-					size = { @panel_width_plus_14 570 }
+					size = { @panel_width_plus_14 520 }
 					### TODO: fix the backgrounds to fit the set container size (currently 540 x 600)
 					
 					character_with_background = {
-						size = { @panel_width_plus_14 570 }
+						size = { @panel_width_plus_14 520 }
 					}
 
 					widget = {
-						size = { @panel_width 570 }
+						size = { @panel_width 520 }
 
 						flowcontainer = {
 							parentanchor = right|vcenter
@@ -605,7 +633,7 @@ types commander_panel_types
 									widget = {
 										name = "tutorial_highlight_character_panel_promote_button"
 
-										size = { 210 43 }
+										size = { 240 50 }
 
 										promote_commander_button = {
 											parentanchor = center
@@ -627,13 +655,12 @@ types commander_panel_types
 										}
 									}
 								}
-							}
                             
                             ### Command Limit Adjustment
                             ACL_command_limit_selection = {
                                 visible = "[And( And( Or(Character.IsGeneral, Character.IsAdmiral) , Not( Character.GetCountry.IsAIOrOtherPlayer ) ), Not( Character.IsInExilePool ) )]"
                             }
-
+                            
 							### BATTALIONS, ATTRITION, MORALE
 							character_stats_entry = {
 
@@ -871,7 +898,8 @@ types commander_panel_types
 
 							### AGE
 							character_stats_entry = {
-
+								### This is to not overcrowd the panel when the character is both a General and an Agitator
+								visible = "[Not(And(Character.IsAgitator, Character.IsGeneral))]"
 								tooltip = "CHARACTER_AGE_TOOLTIP"
 
 								blockoverride "icon_texture" {
@@ -885,7 +913,113 @@ types commander_panel_types
 								}
 								blockoverride "single_text_entry" {}
 
+								blockoverride "divider" {
+									divider_clean = {
+										visible = "[Character.IsAgitator]"
+										parentanchor = bottom|hcenter
+										position = { 0 -2 }
+									}
+								}
+							}
+
+							### POLITICAL MOVEMENT PREDICTION - WHEN IN EXILE POOL
+							character_stats_entry = {
+
+								datacontext = "[Character.PredictLawToAgitate(GetPlayer.Self)]"
+								datacontext = "[Law.GetPoliticalMovement]"
+
+								tooltip = "AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE"
+
+								blockoverride "visibility" {
+									visible = "[Character.IsInExilePool]"
+								}
+
+								blockoverride "icon" {
+									icon = {
+										visible = "[Law.IsValid]"
+										size = { 35 35 }
+										texture = "[Law.GetTexture]"
+										parentanchor = left|vcenter
+										position = { 10 0 }
+									}
+
+									icon = {
+										visible = "[Not(Law.IsValid)]"
+										size = { 35 35 }
+										texture = "gfx/interface/icons/generic_icons/red_cross.dds"
+										parentanchor = left|vcenter
+										position = { 10 0 }
+									}
+								}
+
+								blockoverride "double_entry_label" {}
+								blockoverride "double_entry_value" {}
+								blockoverride "single_text_entry" {}
+
 								blockoverride "divider" {}
+
+								blockoverride "additional_items" {
+									textbox = {
+										size = { 170 40 }
+										position = { 55 0 }
+										parentanchor = vcenter
+										elide = right
+										fontsize_min = 14
+										multiline = yes
+										align = left|nobaseline
+										text = "AGITATOR_START_JOIN_POLITICAL_MOVEMENT"
+									}
+								}
+							}
+
+							### POLITICAL MOVEMENT - WHEN IN A COUNTRY
+							character_stats_entry = {
+
+								datacontext = "[Character.PredictLawToAgitate(GetPlayer.Self)]"
+								datacontext = "[Law.GetPoliticalMovement]"
+
+								tooltip = "AGITATOR_POLITICAL_MOVEMENT"
+
+								blockoverride "visibility" {
+									visible = "[And(Not(Character.IsInExilePool), Character.IsAgitator)]"
+								}
+
+								blockoverride "icon" {
+									icon = {
+										visible = "[Law.IsValid]"
+										size = { 35 35 }
+										texture = "[Law.GetTexture]"
+										parentanchor = left|vcenter
+										position = { 10 0 }
+									}
+
+									icon = {
+										visible = "[Not(Law.IsValid)]"
+										size = { 35 35 }
+										texture = "gfx/interface/icons/generic_icons/red_cross.dds"
+										parentanchor = left|vcenter
+										position = { 10 0 }
+									}
+								}
+
+								blockoverride "double_entry_label" {}
+								blockoverride "double_entry_value" {}
+								blockoverride "single_text_entry" {}
+
+								blockoverride "divider" {}
+
+								blockoverride "additional_items" {
+									textbox = {
+										size = { 170 40 }
+										position = { 55 0 }
+										parentanchor = vcenter
+										elide = right
+										fontsize_min = 14
+										multiline = yes
+										align = left|nobaseline
+										text = "AGITATOR_POLITICAL_MOVEMENT"
+									}
+								}
 							}
 						}
 					}
